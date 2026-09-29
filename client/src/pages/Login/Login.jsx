@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Login() {
   const [loginType, setLoginType] = useState("student");
 
@@ -22,7 +24,7 @@ function Login() {
 
       if (loginType === "student") {
         const response = await axios.post(
-          "http://127.0.0.1:5000/api/students/login",
+       `${API_URL}/api/students/login`,
           {
             email,
             password,
@@ -49,7 +51,7 @@ function Login() {
 
 else if (loginType === "faculty") {
   const response = await axios.post(
-    "http://127.0.0.1:5000/api/faculty/login",
+    `${API_URL}/api/faculty/login`,
     {
       email,
       password,
@@ -82,7 +84,7 @@ else if (loginType === "faculty") {
 
 else {
   const response = await axios.post(
-    "http://127.0.0.1:5000/api/admin/login",
+    `${API_URL}/api/admin/login`,
     {
       email,
       password,
